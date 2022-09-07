@@ -1,0 +1,56 @@
+@font-face {
+  font-family: 'Roboto', sans-serif;
+  src: url(~@/assets/fonts/Roboto-Bold.ttf);
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Roboto', sans-serif;
+  src: url(~@/assets/fonts/RobotoCondensed-Regular.ttf);
+  font-weight: 400;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 48px;
+  letter-spacing: 0.21em;
+  line-height: 48px;
+  color: #000000;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 36px;
+  color: #FFFFFF;
+}
+
+h3 {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 32px;
+  color: #FFFFFF;
+}
+
+h4 {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 12px;
+  color: #988F8F;
+}
+
+p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #FFFFFF;
+}
+
+span {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #E5E5E5;
+}
+/*# sourceMappingURL=style.css.map */
