@@ -48,4 +48,13 @@ export default {
     margin-top: 12px
 .b-content h4
     margin-top: 8px
+.b-param:before
+    position: absolute
+    top: -7px
+    left: -25px
+    content: ''
+    background: $darkGreyColor
+    width: 50px
+    height: 15px
+    transform: rotate(106deg)
 </style>

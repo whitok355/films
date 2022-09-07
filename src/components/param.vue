@@ -21,15 +21,6 @@ export default {
     font-size: 12px
     line-height: 12px
     color: $blackColor
-.b-param:before
-    position: absolute
-    top: -7px
-    left: -25px
-    content: ''
-    background: $darkGreyColor
-    width: 50px
-    height: 15px
-    transform: rotate(106deg)
 .b-tape
     margin-left: 12px
 </style>

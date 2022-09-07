@@ -1,14 +1,8 @@
 <template>
-    <div class="b-check-boxs">
         <div class="b-check-box">
-            <div id="name" @click="check" :class="name ? 'b-pink':'b-grey'" class="b-input"></div>
-            <div class="b-label">Отсортировать по названию</div>
+            <div :id="id" @click="check" class="b-input" :class="boolValue ? 'b-pink': 'b-grey'"></div>
+            <div class="b-label">{{text}}</div>
         </div>
-        <div class="b-check-box">
-            <div id="year" @click="check" :class="year ? 'b-pink':'b-grey'" class="b-input"></div>
-            <div class="b-label">Отсортировать по году</div>
-        </div>
-    </div>
 </template>
 <script>
 export default {
@@ -17,6 +11,12 @@ export default {
         text:{
             type: String,
         },
+        boolValue:{
+            type: Boolean,
+        },
+        id: {
+            type: String,
+        }
     },
     data(){
         return{
@@ -26,13 +26,7 @@ export default {
     },
     methods:{
         check(e){
-            this[e.target.id] = true
-            if(e.target.id === 'name'){
-                this.year = false
-            }
-            if(e.target.id === 'year'){
-                this.name = false
-            }
+            this.$emit('check', e)
         }
     }
 }
@@ -43,8 +37,6 @@ export default {
     font-size: 16px
     line-height: 16px
     color: $lightGreyColor
-.b-check-boxs
-    display: flex
 .b-check-box
     display: flex
     align-items: center
@@ -59,7 +51,6 @@ export default {
     align-items: center
 .b-grey
     border: 1px solid $lightGreyColor
-    background: $mainBg
 .b-pink
     background: $pinkColor
     border: 1px solid white
