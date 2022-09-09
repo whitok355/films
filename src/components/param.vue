@@ -1,11 +1,16 @@
 <template>
-    <div class="b-param">142 МИН / 02:22:00 <tape/></div>
+    <div class="b-param">{{duration}}<tape/></div>
 </template>
 <script>
 import tape from './tape'
 export default {
     name: 'parameters', 
-    components: { tape }
+    components: { tape },
+    props:{
+        duration:{
+            type: String
+        }
+    }
 }
 </script>
 <style lang='sass' scoped>
@@ -16,11 +21,12 @@ export default {
     background: $lightGreyColor
     display: flex
     align-items: center
-    justify-content: center
     font-weight: 700
     font-size: 12px
     line-height: 12px
     color: $blackColor
+    padding-left: 17px
+    box-sizing: border-box
 .b-tape
-    margin-left: 12px
+    padding-left: 12px
 </style>

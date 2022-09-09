@@ -40,8 +40,6 @@ export default {
 .b-check-box
     display: flex
     align-items: center
-.b-check-box:first-child
-    margin-right: 34.5px
 .b-input
     width: 15px
     height: 15px

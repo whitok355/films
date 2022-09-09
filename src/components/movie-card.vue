@@ -5,15 +5,16 @@
             <div class="b-logo">
                 <loader/>            
             </div>
-
             <div class="b-top-els">
                 <div class="b-top-el">
-                    <router-link to="/"> Назад к списку</router-link>
-                    <parameters/>
-                    <parameters/>
-                    <img src='../assets/img/Vector.svg' alt="#">
-                    <img src='../assets/img/arrow.svg' alt="#">
-                    <checkbox @check="check" :text="''" :id="'empty'" :boolValue="empty"/>
+                    <router-link to="/" class="b-arrow"> Назад к списку</router-link>
+                    <div class="b-params">
+                        <parameters/>
+                        <parameters/>
+                    </div>
+                    <img class="vector" src='../assets/img/Vector.svg' alt="#">
+                    <img class="arrow" src='../assets/img/arrow.svg' alt="#">
+                    <checkbox class="margin" @check="check" :text="''" :id="'empty'" :boolValue="empty"/>
                     <checkbox @check="check" :text="''" :id="'empty2'" :boolValue="empty2"/>
                 </div>
                 <div class="b-top-el">
@@ -25,6 +26,14 @@
             </div>
         </div>
         <main>
+            <listItem/>
+            <listItem/>
+            <listItem/>
+            <listItem/>
+            <listItem/>
+            <listItem/>
+            <listItem/>
+            <listItem/>
         </main>
     </div>
 </div>
@@ -33,10 +42,10 @@
 import loader from './loader'
 import parameters from './param'
 import checkbox from './checkbox'
-
+import listItem from './list-item'
 export default {
     name: 'film',
-    components: { loader, parameters, checkbox },
+    components: { loader, parameters, checkbox, listItem },
     data(){
         return{
             year: false,
@@ -87,19 +96,28 @@ export default {
     min-height: 100vh
     max-width: 1920px
     margin: 0 auto
+main
+    margin-top: 60px
 .b-top
-    padding-top: 110px
+    padding-top: 84px
     display: flex
-    align-items: center
+.b-logo
+    margin-left: -5px
 .b-top-els
-    margin-left: 47px
-    width: 60%
+    margin-left: 38px
 .b-top-el
     display: flex
-    justify-content: space-between
     align-items: center
+.b-top-el:first-child
+     margin-top: 22px   
 .b-top-el:last-child
     margin-top: 44px
+.b-params
+    display: flex
+.b-param:first-child
+    margin-left: 62px
+.b-param:last-child
+    margin-left: 27px
 .b-param:before
     position: absolute
     top: -7px
@@ -109,8 +127,21 @@ export default {
     width: 50px
     height: 15px
     transform: rotate(106deg)
-a:before
+.b-arrow:before
     content: url(~@/assets/img/arrow.svg)
     padding-right: 20.33px
     margin-top: 10px
+.vector
+    margin-left: 30px
+.arrow
+    margin-left: 36px
+    margin-right: 44px
+.margin
+    margin-right: 17px
+.b-check-box:nth-child(1)
+    margin-right: 34.5px
+.b-check-box:nth-child(2)
+    margin-right: 62.5px   
+.b-check-box:nth-child(3)
+    margin-right: 26.7px 
 </style>

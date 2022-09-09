@@ -19,10 +19,12 @@ export default {
   padding: 0
   font-family: 'Roboto', sans-serif
 header
-  min-height: 100px
+  min-height: 98px
   background: $redColor
   display: flex
   align-items: center
   justify-content: center
   box-shadow: 0px 8px 7px rgba(0, 0, 0, 0.28)
+header h1
+  margin-top: 13px
 </style>
