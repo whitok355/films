@@ -8,9 +8,9 @@ const routes = [
     component: Home
   },
   {
-    path: '/movie-card/',
     name: 'Film',
-    component: () => import('../components/movie-card.vue')
+    path: '/film-card/:id',
+    component: () => import('../components/film-card.vue'),
   }
 ]
 

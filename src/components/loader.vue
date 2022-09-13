@@ -7,5 +7,8 @@
 <script>
 export default {
     name: 'loader'
-}</script>
-<style lang='sass' scoped></style>
+}
+</script>
+<style lang='sass' scoped>
+
+</style>

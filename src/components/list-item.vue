@@ -1,5 +1,4 @@
 <template>
-<router-link class="b-link" to='/movie-card/'>
     <div class="b-item">
         <div class="b-img">
             <img src="~@/assets/img/1.png" alt="#">
@@ -7,7 +6,7 @@
         <div class="b-content">
             <div class="b-content-top">
                 <h2>{{film.title}}</h2>
-                <parameters  v-for="(duration, id) in film.collapse.duration" :duration="duration" :key="id"/>
+                <parameters v-for="(duration, id) in film.collapse.duration" :key="id" :duration="film.collapse.duration[0]" />
             </div>
             <div class="b-discr">
                 <div class="b-discr-line"><h4>{{film.year}}, </h4><h4 v-for="(value, id) in film.genres" :key="id">{{value}}</h4></div>
@@ -18,24 +17,21 @@
             </div>
         </div>
     </div>
-</router-link>
 </template>
 <script>
 import parameters from './param'
+
 export default {
     name: 'listItem',
     components: { parameters },
     props:{
         film:{
-            type: Object
-        }
+            type: Object,
+        },
     },
 }
 </script>
 <style lang="sass" scoped>
-.b-link
-    text-decoration: none
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
 .b-item
     display: flex
     width: 100%

@@ -4,16 +4,19 @@
             <div class="b-top">
                 <h3>Фильмы</h3>
                 <div class="b-checkboxs">
-                    <checkbox @check="check" :boolValue="name" :text="'Отсортировать по названию'" :id="'name'"/>
-                    <checkbox @check="check" :boolValue="year" :text="'Отсортировать по году'" :id="'year'"/>
+                    <checkbox name="mainFilter" @check="check" :boolValue="name" :text="'Отсортировать по названию'" :id="'name'"/>
+                    <checkbox name="mainFilter" @check="check" :boolValue="year" :text="'Отсортировать по году'" :id="'year'"/>
                 </div>
                 <hr class="b-hr">
             </div>
             <div class="b-list-items" v-if="data != null" >
-                <listItem class="b-action" v-for="(item, id) in data" :film='item' :key="id"/>
+            <div v-if="err" class="b-err">{{err}}</div>
+            <router-link class="b-link" v-for="(film, id) in filterData" :key="id" :to='{name:"Film", params: {id:film.id}}' @click="setViewFilmA(film)">
+                <listItem class="b-action" :film='film'/>
+            </router-link>
             </div>
-            <div class="b-loader-container">
-                <loader/>           
+            <div v-if="!err && !filterData" class="b-loader-container">
+                <loader class="b-loader-el"/>           
             </div>
         </div>
     </main>
@@ -22,41 +25,47 @@
 import checkbox from './checkbox'
 import listItem from './list-item'
 import loader from './loader'
+import {mapState, mapActions} from 'vuex'
 
 export default {
     name: 'list',
     components: { checkbox, listItem, loader },
+    mounted(){
+        this.getDataA(this.apiAll)
+    },
     data(){
         return{
-            year: false,
             name: false,
-            data: null,
+            year: false,
         }
-    },
-    mounted(){
-        this.axios
-            .get('https://floating-sierra-20135.herokuapp.com/api/movies')
-            .then(responce => (this.data = responce.data.data))
     },
     methods:{
+        ...mapActions(['getDataA', 'setViewFilmA', 'filterNameA', 'filterYearA', 'clearFilterA']),
         check(e){
-            this[e.target.id] = true
-            if(e.target.id === 'name'){
-                this.year = false
-                this.filterName()
+            if(this[e.target.id] === true){
+                this[e.target.id] = false
+                this.clearFilterA()
+            } else{
+                this[e.target.id] = true
+                if(e.target.id === 'name'){
+                    this.year = false
+                    this.filterNameA()
+                }
+                if(e.target.id === 'year'){
+                    this.name = false
+                    this.filterYearA()
+                }
             }
-            if(e.target.id === 'year'){
-                this.name = false
-                this.filterYear()
-            }
-        },
-        filterName(){
-            this.data = this.data.sort((prev, next)=> prev.title.localeCompare(next.title))
-        },
-        filterYear(){
-            this.data = this.data.sort((prev, next) => prev.year - next.year)
         }
     },
+    computed:{
+        ...mapState({
+            data: (state) => state.data,
+            filterData: (state) => state.filterData,
+            apiAll: (state) => state.apiAll,
+            err: (state)=> state.err,
+        })
+    }
 }
 </script>
 <style lang='sass' scoped>
@@ -87,6 +96,10 @@ main
 .b-loader-container
     margin-top: 255.44px
     text-align: center
+.b-link
+    text-decoration: none
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+.b-loader-el
     animation-name: rotation
     animation-duration: 2s
     animation-iteration-count: infinite
@@ -95,5 +108,5 @@ main
     0% 
         transform: rotate(0deg)
     100% 
-        transform: rotate(360deg)
+        transform: rotate(360deg)   
 </style>

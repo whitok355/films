@@ -1,5 +1,5 @@
 <template>
-    <div class="b-param">{{duration}}<tape/></div>
+    <div class="b-param">{{duration}} <tape v-if="duration != null"/> </div>
 </template>
 <script>
 import tape from './tape'
@@ -8,9 +8,9 @@ export default {
     components: { tape },
     props:{
         duration:{
-            type: String
-        }
-    }
+            type: String,
+        },
+    },
 }
 </script>
 <style lang='sass' scoped>
